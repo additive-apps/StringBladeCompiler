@@ -1,6 +1,7 @@
 <?php
 namespace Wpb\String_Blade_Compiler;
 
+use Illuminate\Contracts\View\Factory as ViewFactory;
 use Illuminate\View\FileViewFinder;
 use Illuminate\View\ViewServiceProvider;
 use Illuminate\View\Engines\EngineResolver;
@@ -176,6 +177,10 @@ class StringBladeServiceProvider extends ViewServiceProvider implements Deferrab
      */
     public function provides()
     {
-        return [StringBlade::class];
+        return [
+            StringBlade::class,
+            'view',
+            ViewFactory::class,
+        ];
     }
 }
